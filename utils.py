@@ -20,11 +20,12 @@ def get_MFT_dictionaries():
             continue
         if not start_words:
             pair = line.split('\t')
-            dict_foundations[pair[1]] = pair[0]
-            dict_words[pair[1]] = []
+            foundation_index = int(pair[1])
+            dict_foundations[foundation_index] = pair[0]
+            dict_words[foundation_index] = []
         else: # Words
             line_splitted = line.split('\t')
-            foundation_codes = [x for x in line_splitted[1:] if x != '']
+            foundation_codes = [ int(x) for x in line_splitted[1:] if x != '' ]
             for i in foundation_codes:
                 dict_words[i] = dict_words[i] + [line_splitted[0]]
     return dict_foundations, dict_words
