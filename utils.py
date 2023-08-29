@@ -8,7 +8,7 @@ import pandas as pd
 
 def get_MFT_dictionaries():
     file_name = 'mfd_ptbr_alpha.dic'
-    file = open(file_name, 'r', encoding='utf-8-sig')
+    file = open(os.path.join(os.path.dirname(__file__), file_name), 'r', encoding='utf-8-sig')
     data = file.read()
     str_lines = data.split('\n')[1:]
     start_words = False
@@ -32,6 +32,6 @@ def get_MFT_dictionaries():
 def MFT_to_python_regex(dict_mft_words):
     create_myMFT_words = dict()
     for key, value in dict_mft_words.items():
-        create_myMFT_words[key] = '|'.join([ (r'\b' + x.replace('*', r'\w+')) for x in value ])
+        create_myMFT_words[key] = '|'.join([ (r'\b' + x.replace('*', r'\w*')) for x in value ])
     return create_myMFT_words
 
