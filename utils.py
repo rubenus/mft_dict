@@ -21,7 +21,7 @@ def get_MFT_dictionaries():
         if not start_words:
             pair = line.split('\t')
             foundation_index = int(pair[1])
-            dict_foundations[foundation_index] = pair[0]
+            dict_foundations[pair[0]] = foundation_index
             dict_words[foundation_index] = []
         else: # Words
             line_splitted = line.split('\t')
